@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: MIT
 # Copyright (c) 2025 Siddhartha Srinivasa
 
+import copy
 import os
 from typing import Any, Dict, List, Optional
 
@@ -53,7 +54,7 @@ class AssetManager:
     def get(self, name: str) -> Dict[str, Any]:
         if name not in self.assets:
             raise KeyError(name)
-        return self.assets[name].copy()
+        return copy.deepcopy(self.assets[name])
 
     def list(self) -> List[str]:
         return sorted(self.assets.keys())
